@@ -1,5 +1,8 @@
 import acquire
 import pandas as pd
+import matplotlib.pyplot as plt
+
+
 
 def prep(df, user):
     '''
@@ -8,7 +11,7 @@ def prep(df, user):
     '''
     df = df[pd.isnull(df['cohort_id'])]
     df = df[df.user_id == user]
-    df.date = pd.to_datetime(df['date'])
+    df.date = pd.to_datetime(df.date)
     df = df.set_index(df.date)
     pages = df['endpoint'].resample('d').count()
     return pages

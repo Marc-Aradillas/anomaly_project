@@ -140,7 +140,7 @@ def plot_pages_over_time(df):
     plt.plot(pages)
     plt.show()
 
-def find_anomalies(df, span, weight):
+def find_anomaly(df):
     span = 30
     weight = 3.5
     # here we are looping through all user ids
@@ -149,11 +149,11 @@ def find_anomalies(df, span, weight):
         user_df = p.find_anomalies(df, u, span, weight)
         anomalies = pd.concat([anomalies, user_df], axis=0)
 
-# def plot_top_ip_addresses(df, num_top_ips=5):
-#     ip_df = df['source_ip'].value_counts()
-#     ip_df['count'].sort_values().tail(num_top_ips).plot.barh(figsize=(5, 9))
-#     plt.title('Number of Unique IP Addresses')
-#     plt.show()
+def plot_top_ip_addresses(df, num_top_ips=5):
+    ip_counts = df['source_ip'].value_counts()
+    ip_counts.sort_values().tail(num_top_ips).plot.barh(figsize=(5, 9))
+    plt.title('Number of Unique IP Addresses')
+    plt.show()
 
 def get_user_tagged_ip(df, threshold_low=0.5, threshold_high=1.0):
     user_tagged_ip = (
