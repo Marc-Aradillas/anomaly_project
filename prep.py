@@ -1,12 +1,5 @@
-def acquire(file_name):
-    # Read the specified file
-    df = pd.read_csv(file_name, sep="\s", header=None, names=colnames, usecols=[0, 2, 3, 4, 5])
-    
-    # Optionally, you can print the first few rows to check the data
-    print(df.head())
-
-    # Return the DataFrame
-    return df
+import acquire
+import pandas as pd
 
 def prep(df, user):
     '''
