@@ -9,6 +9,7 @@ def prep(df, user):
     The prep function resetos the df by user id andsets index as date column which is changes into a datetime object.
     Pages is also created as a column to count the number of times an endpoint is visited daily as counts.
     '''
+    df = df[df['endpoint'] != '/']
     df = df[pd.isnull(df['cohort_id'])]
     df = df[df.user_id == user]
     df.date = pd.to_datetime(df.date)

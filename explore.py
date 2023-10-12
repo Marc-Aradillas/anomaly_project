@@ -7,6 +7,7 @@ import prep as p
 # question 1
 
 def plot_top_five_endpoints(df, title):
+    df = df[df['endpoint'] != '/']
     df = df['endpoint'].value_counts().head(5)
     df.plot(kind='bar', figsize=(10, 6), color='turquoise')
     plt.title(title)
@@ -138,6 +139,7 @@ def plot_pages_over_time(df):
     df = df.set_index(df.date)
     pages = df['endpoint'].resample('d').count()
     plt.plot(pages)
+    plt.xticks(rotation=30)
     plt.show()
 
 def find_anomaly(df):
